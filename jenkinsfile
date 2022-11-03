@@ -1,0 +1,15 @@
+pipeline {
+
+        agent any
+        stages {
+                stage('check out git'){
+                    
+                steps{
+                        echo 'Pulling...';
+                        git branch: 'eskander',
+                        url : 'https://github.com/eskander1998/ProjetDevops'
+                    }
+                }
+        }
+
+}
