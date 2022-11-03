@@ -20,7 +20,7 @@ pipeline {
        
         stage('MVN CLEAN') {
             steps {
-                sh 'mvn clean install'
+                sh 'mvn clean'
                  
             }
         }
@@ -32,7 +32,11 @@ pipeline {
             
             stage('MVN SONARQUBE') {
             steps {
-                sh 'mvn sonar:sonar'
+                withSonarQubeEnv('sonarqube-8.9') { 
+        // If you have configured more than one global server connection, you can specify its name
+//      sh "${scannerHome}/bin/sonar-scanner"
+        sh "mvn sonar:sonar"
+    }
                  
             }
         }
