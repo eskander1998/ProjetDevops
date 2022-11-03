@@ -10,8 +10,7 @@ pipeline {
                         url : 'https://github.com/eskander1998/ProjetDevops'
                     }
                 }
-       
-        stage('Testing maven') {
+       stage('Testing maven') {
             steps {
                 sh """mvn -version"""
                  
@@ -29,19 +28,14 @@ pipeline {
                 sh 'mvn compile'
                  
             }
-            
-            stage('MVN SONARQUBE') {
+        }
+        
+		stage('SonarQube analysis 1') {
             steps {
-               
-                withSonarQubeEnv('sonarqube-8.9') { 
-        sh "${scannerHome}/bin/sonar-scanner"
-        sh "mvn sonar:sonar"
-    }
-    }
-    
-    
-                 
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=ademdaami'
             }
         }
+       
+        
     }
 }
