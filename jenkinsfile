@@ -10,6 +10,25 @@ pipeline {
                         url : 'https://github.com/eskander1998/ProjetDevops'
                     }
                 }
+       
+        stage('Testing maven') {
+            steps {
+                sh """mvn -version"""
+                 
+            }
         }
-
+       
+        stage('MVN CLEAN') {
+            steps {
+                sh 'mvn clean'
+                 
+            }
+        }
+        stage('MVN COMPILE') {
+            steps {
+                sh 'mvn compile'
+                 
+            }
+        }
+    }
 }
