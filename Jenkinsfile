@@ -4,10 +4,6 @@ pipeline {
         maven 'maven3'
         jdk 'JDK11'
     }
-    environment {
-		DOCKERHUB_CREDENTIALS=credentials('Docker')
-		
-	}
     stages{
             stage('Checkout GIT'){
                 steps {
