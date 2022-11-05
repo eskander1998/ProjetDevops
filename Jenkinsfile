@@ -33,7 +33,7 @@ pipeline {
 	stage('MVN TEST') {
             steps {
 		echo 'Testing ...';
-                sh 'mvn test -Dtest="StockServiceImpl"'
+                sh 'mvn test -Dtest="StockServiceImplTest"'
                  
             }
         }
