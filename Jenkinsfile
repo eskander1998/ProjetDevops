@@ -33,7 +33,7 @@ pipeline {
             
             stage('Test unitaire') {
             steps {
-                    sh'mvn test'
+                    sh'mvn --batch-mode test'
 
             }
             }
