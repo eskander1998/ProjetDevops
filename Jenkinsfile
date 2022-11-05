@@ -32,7 +32,8 @@ pipeline {
 
 	stage('MVN TEST') {
             steps {
-                sh 'mvn test'
+		echo 'Testing ...';
+                sh 'mvn test -Dtest="SteockServiceImpMock"'
                  
             }
         }
