@@ -23,12 +23,7 @@ pipeline {
                  
             }
             }
-            stage('MVN INSTALL') {
-            steps {
-                sh 'mvn install'
-                 
-            }
-            }
+     		
             stage('MVN COMPILE') {
             steps {
                 sh 'mvn compile'
@@ -36,9 +31,9 @@ pipeline {
             }
             }
             
-              stage('Test unitaire') {
+            stage('Test unitaire') {
             steps {
-                    sh'mvn --batch-mode test'
+                    sh'mvn test'
 
             }
             }
