@@ -54,7 +54,7 @@ pipeline {
             
             }
             
-            stage('test') {
+            stage('Test unitaire') {
             steps {
                     sh " mvn test"
             }
