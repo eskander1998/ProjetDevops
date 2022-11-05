@@ -8,11 +8,15 @@ pipeline {
             }
         }
 
-      
-	
-	stage('MVN CLEAN INSTALL') {
+       stage('Testing maven') {
             steps {
-                sh 'mvn clean install'
+                sh "mvn -version"
+            }
+        }
+
+	stage('MVN CLEAN') {
+            steps {
+                sh 'mvn clean'
                  
             }
         }
@@ -24,11 +28,20 @@ pipeline {
             }
         }
 
+	stage('MVN TEST') {
+            steps {
+                sh 'mvn test'
+                 
+            }
+        }
 
         stage('Testing from git') {
             steps {
                 sh "git --version"
             }
         }
+
+
+
     }
 }
