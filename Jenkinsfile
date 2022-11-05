@@ -56,6 +56,24 @@ pipeline {
                   
             }
         }
+        stage('Build Docker Image Backend') {
+            steps {
+                sh 'docker build -t ahmedkaroui/projetdevops-backend . '
+                 
+            }
+        }
+        stage('Login Dockerhub') {
+
+			steps {
+			sh 'docker login -u goro1809 -p Amin2004Ahmed1999'
+			}
+			}
+        stage('Push Backend Image To Dockerhub') {
+            steps {
+                sh 'docker push ahmedkaroui/projetdevops-backend'
+                 
+            }
+        }
 
 
 
