@@ -58,7 +58,7 @@ pipeline {
         }
         stage('Build Docker Image Backend') {
             steps {
-                sh 'docker build -t ahmedkaroui/projetdevops-backend . '
+                sh 'docker build -t goro1809/projetdevops-backend . '
                  
             }
         }
@@ -70,7 +70,7 @@ pipeline {
 			}
         stage('Push Backend Image To Dockerhub') {
             steps {
-                sh 'docker push ahmedkaroui/projetdevops-backend'
+                sh 'docker push goro1809/projetdevops-backend'
                  
             }
         }
