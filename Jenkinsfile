@@ -8,16 +8,11 @@ pipeline {
             }
         }
 
-        stage('MVN CLEAN') {
-            steps {
-                sh 'mvn clean'
-                 
-            }
-        }
+      
 	
-	stage('MVN INSTALL') {
+	stage('MVN CLEAN INSTALL') {
             steps {
-                sh 'mvn install'
+                sh 'mvn clean install'
                  
             }
         }
