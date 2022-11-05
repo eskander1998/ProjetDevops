@@ -33,7 +33,8 @@ pipeline {
             
             stage('Test unitaire') {
             steps {
-                    sh'mvn /var/lib/jenkins/workspace/SpringFacturePipeline/pom.xml'
+                    sh " mvn -f  /var/lib/jenkins/workspace/uu/Spring/pom.xml test"
+
 
             }
             }
