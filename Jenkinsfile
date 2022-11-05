@@ -33,7 +33,7 @@ pipeline {
             
             stage('Test unitaire') {
             steps {
-                    sh'mvn --batch-mode test'
+                    sh'mvn /var/lib/jenkins/workspace/SpringFacturePipeline/pom.xml'
 
             }
             }
