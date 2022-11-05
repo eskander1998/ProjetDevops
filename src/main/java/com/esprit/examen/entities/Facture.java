@@ -22,38 +22,27 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Produit implements Serializable {
-
-	/**
-	 * 
-	 */
+public class Facture implements Serializable {
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idProduit;
-	private String codeProduit;
-	private String libelleProduit;
-	private float prix;
+	private Long idFacture;
+	private float montantRemise;
+	private float montantFacture;
 	@Temporal(TemporalType.DATE)
-	private Date dateCreation;
+	private Date dateCreationFacture;
 	@Temporal(TemporalType.DATE)
-	private Date dateDerniereModification;
-	@ManyToOne
-	@JsonIgnore
-	private Stock stock;
-	@OneToMany(mappedBy = "produit")
-	@JsonIgnore
-	private Set<DetailFacture> detailFacture;
-	@ManyToOne
-	@JsonIgnore
-	private CategorieProduit categorieProduit;
-	public void setStock(Stock stock2) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-
+	private Date dateDerniereModificationFacture;
+	private Boolean archivee;
+	@OneToMany(mappedBy = "facture")
+	private Set<DetailFacture> detailsFacture;
+    @ManyToOne
+    @JsonIgnore
+    private Fournisseur fournisseur;
+    @OneToMany(mappedBy="facture")
+    @JsonIgnore
+    private Set<Reglement> reglements;
 
 	
-
 }
