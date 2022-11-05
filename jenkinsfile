@@ -42,5 +42,27 @@ pipeline {
             }
         }
         
+        
+        stage('Build Docker image Backend') {
+            steps {
+                sh 'docker build -t eskanderjguirim/projetdevops-backend . '
+                 
+            }
+        }
+        stage('Login Dockerhub') {
+
+			steps {
+			sh 'docker login -u eskanderjguirim -p docker123'
+			}
+			}
+        stage('Push image Backend to Dockerhub') {
+            steps {
+                sh 'docker push eskanderjguirim/projetdevops-backend'
+                 
+            }
+        }
+        
+        
+        
     }
 }

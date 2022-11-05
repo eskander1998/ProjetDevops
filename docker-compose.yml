@@ -1,0 +1,32 @@
+#version: "3.4"
+#
+#services:
+#  mysql-container3:
+#    container_name: mysql-container3
+#    ports:
+#      - '3306:3306'
+#    environment:
+#      - MYSQL_DATABASE=1
+#      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+#    restart: always
+#    volumes:
+#      - mysql-container3:/var/lib/mysql:rw
+#    image: 'mysql:latest'
+#  achat-back:
+#    depends_on:
+#      - mysql-container3
+#    container_name: achat-backend
+#    ports:
+#      - '8089:8089'
+#    image: yasminemanita/achat-backend
+#
+#  achat-front:
+#    depends_on:
+#      - achat-back
+#    container_name: frontoperateur
+#    ports:
+#      - '4200:80'
+#    image: yasminemanita/frontoperateur
+#
+#volumes:
+#  mysql-container3: { }
