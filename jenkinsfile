@@ -63,6 +63,13 @@ pipeline {
         }
         
         
+         stage('Docker compose back/sql/front') {
+            steps {
+                sh 'docker-compose up'
+                 
+            }
+        }
+        
         
     }
 }
