@@ -49,7 +49,7 @@ pipeline {
             
             stage('Test unitaire') {
             steps {
-                    sh " mvn -f  /var/lib/jenkins/workspace/uu/Spring/pom.xml test"
+                    sh'mvn --batch-mode test'
 
             }
             }
