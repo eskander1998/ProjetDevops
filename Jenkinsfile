@@ -84,7 +84,7 @@ pipeline {
         	}
         	}
         	}
-        	stage('Push image') {
+        	stage('Cleaning up') {
  			steps {
  			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
  			
@@ -92,6 +92,7 @@ pipeline {
         	}
         	}
         	}
+    		 
     		 
            
             
