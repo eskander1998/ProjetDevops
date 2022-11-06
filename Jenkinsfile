@@ -65,7 +65,7 @@ pipeline {
         stage('Login Dockerhub') {
 
 			steps {
-			sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW''
+			sh 'docker login -u goro1809 -p Amin2004Ahmed1999'
 			}
 			}
         stage('Push Backend Image To Dockerhub') {
