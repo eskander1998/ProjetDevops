@@ -34,7 +34,44 @@ pipeline {
             }
             }
 			
-			 	stage('Build image') {
+			
+		 stage('Test unitaire') {
+            steps {
+                    sh 'mvn test'
+            }
+            }
+            
+            
+            
+            
+            
+            stage('SonarQube analysis 1') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=fourat'
+            }
+            }
+            
+              
+            
+            stage('Package') {
+            steps {
+                sh 'mvn -DskipTests clean package' 
+            }
+            }
+            
+            
+        
+        
+		    stage('Publish to Nexus Repository Manager') {
+            steps {
+                script {
+					nexusArtifactUploader artifacts: [[artifactId: 'ProjetDevops', classifier: '', file: 'target/ProjetDevops-1.0.jar', type: 'jar']], credentialsId: 'NEXUS_CRED', groupId: 'com.esprit.examen', nexusUrl: '192.168.1.135:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0.0-SNAPSHOT'
+				}
+            }
+           		
+            }
+            
+            stage('Build image') {
            	steps {
        		 sh "docker build -t fourat8/image ."
        		}
@@ -73,42 +110,6 @@ pipeline {
         	}
         	}
         	}
-		 stage('Test unitaire') {
-            steps {
-                    sh 'mvn test'
-            }
-            }
-            
-            
-            
-            
-            
-            stage('SonarQube analysis 1') {
-            steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=fourat'
-            }
-            }
-            
-              
-            
-            stage('Package') {
-            steps {
-                sh 'mvn -DskipTests clean package' 
-            }
-            }
-            
-            
-        
-        
-		    stage('Publish to Nexus Repository Manager') {
-            steps {
-                script {
-					nexusArtifactUploader artifacts: [[artifactId: 'ProjetDevops', classifier: '', file: 'target/ProjetDevops-1.0.jar', type: 'jar']], credentialsId: 'NEXUS_CRED', groupId: 'com.esprit.examen', nexusUrl: '192.168.1.135:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0.0-SNAPSHOT'
-				}
-            }
-           		
-            }
-            
           
         	
     		
