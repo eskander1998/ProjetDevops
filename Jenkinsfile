@@ -84,6 +84,14 @@ pipeline {
         	}
         	}
         	}
+        	stage('Push image') {
+ 			steps {
+ 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+ 			
+        	 sh "docker rmi -f fourat8/image"
+        	}
+        	}
+        	}
     		 
            
             
