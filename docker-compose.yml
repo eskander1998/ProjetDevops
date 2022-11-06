@@ -6,9 +6,9 @@ services:
     ports:
       - "9000:9000"
     volumes:
-    - 'SonarQube_data:/opt/SonarQube/data'
-    - 'SonarQube_extensions :/opt/SonarQube/extensions'
-    - 'SonarQube_logs:/opt/SonarQube/logs'
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
     restart: unless-stopped
 
   nexus:
@@ -42,7 +42,7 @@ services:
     
 volumes:
   mysql-container: { }
-  SonarQube_data:
-  SonarQube_extensions:
-  SonarQube_logs:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
   nexus-data:
