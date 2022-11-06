@@ -58,7 +58,13 @@ public class StockServiceImplTest {
         List<Stock> list = STI.retrieveAllStocks();
         Assertions.assertNotNull(list);
     }
-	
+	@Test
+	void addStock(){
+		Stock stock = new Stock("stock test",10,100);
+	    Mockito.doReturn(stock).when(stockRepository).save(stock);
+	    Stock stock1 = STI.addStock(stock);
+	    Assertions.assertNotNull(stock1);
+	    }
 	//@Test
 	//public void testAddStock() {
 		//Stock s = new Stock("stock test",10,100);
