@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Built-By: foura
+Build-Jdk: 17.0.4.1
+Implementation-Title: ProjetDevops
+Implementation-Version: 1.0
+Implementation-Vendor-Id: com.esprit.examen
+Implementation-URL: https://spring.io/projects/spring-boot/ProjetDevops
+Created-By: Maven Integration for Eclipse
+
