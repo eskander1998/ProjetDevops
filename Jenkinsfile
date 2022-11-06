@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    
     stages{
             stage('Checkout GIT'){
                 steps {
@@ -23,19 +22,29 @@ pipeline {
                  
             }
             }
-            
             stage('MVN COMPILE') {
             steps {
                 sh 'mvn compile'
                  
             }
             }
-            
-            stage('Test unitaire') {
+
+		 stage('Test unitaire') {
             steps {
                     sh 'mvn test'
             }
             }
+            
+            
+            
+            
+            
+            stage('SonarQube analysis 1') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=fourat'
+            }
+            }
+            
               
             
             stage('Package') {
@@ -43,6 +52,7 @@ pipeline {
                 sh 'mvn -DskipTests clean package' 
             }
             }
+            
         
         
 		    stage('Publish to Nexus Repository Manager') {
@@ -54,9 +64,6 @@ pipeline {
            
             
             }
-            
-          
-           
             
     }
        
