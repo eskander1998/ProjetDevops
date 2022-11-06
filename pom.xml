@@ -98,6 +98,7 @@
                     </execution>
                 </executions>
 			</plugin>
+			
 			<plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
@@ -115,10 +116,18 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
         </plugin>
-        <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
-        </plugin>
+       	<plugin>  
+            <!-- Build an executable JAR -->  
+            <groupId>org.apache.maven.plugins</groupId>  
+            <artifactId>maven-jar-plugin</artifactId>   
+            <configuration>  
+                <archive>  
+                    <manifest>  
+                        <mainClass>com.esprit.microservice.VeloMicroserviceApplication</mainClass>  
+                    </manifest>  
+                </archive>  
+            </configuration>  
+        </plugin>  
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
           <version>2.5.2</version>
