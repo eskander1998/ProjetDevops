@@ -11,7 +11,7 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
     restart: always
     volumes:
-      - mysql-container3:/var/lib/mysql:rw
+      - mysqldb:/var/lib/mysql:rw
     image: 'mysql:latest'
     
     
