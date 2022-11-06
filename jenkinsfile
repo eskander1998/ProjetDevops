@@ -50,7 +50,7 @@ pipeline {
                         bat 'mvn --batch-mode test'
                     }
                 }
-                
+                }}
                 
        stage('NEXUS') {
             steps {
