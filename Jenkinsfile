@@ -33,7 +33,46 @@ pipeline {
                  
             }
             }
-
+			
+			 	stage('Build image') {
+           	steps {
+       		 sh "docker build -t fourat8/image ."
+       		}
+       		}
+    		
+ 			stage('Push image') {
+ 			steps {
+ 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+ 			
+        	 sh "docker push fourat8/image"
+        	}
+        	}
+        	}
+        	stage('pull project') {
+ 			steps {
+ 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+ 			
+        	 sh "docker pull fourat8/image"
+        	}
+        	}
+        	}
+        		stage('Run project') {
+ 			steps {
+ 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+ 			
+        	 sh "docker container run fourat8/image /bin/sh"
+        	}
+        	}
+        	}
+        	
+        	stage('Cleaning up') {
+ 			steps {
+ 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+ 			
+        	 sh "docker rmi -f fourat8/image"
+        	}
+        	}
+        	}
 		 stage('Test unitaire') {
             steps {
                     sh 'mvn test'
@@ -70,44 +109,7 @@ pipeline {
            		
             }
             
-           	stage('Build image') {
-           	steps {
-       		 sh "docker build -t fourat8/image ."
-       		}
-       		}
-    		
- 			stage('Push image') {
- 			steps {
- 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
- 			
-        	 sh "docker push fourat8/image"
-        	}
-        	}
-        	}
-        	stage('pull project') {
- 			steps {
- 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
- 			
-        	 sh "docker pull fourat8/image"
-        	}
-        	}
-        	}
-        		stage('Run project') {
- 			steps {
- 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
- 			
-        	 sh "docker container run -it fourat8/image /bin/sh"
-        	}
-        	}
-        	}
-        	stage('Cleaning up') {
- 			steps {
- 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
- 			
-        	 sh "docker rmi -f fourat8/image"
-        	}
-        	}
-        	}
+          
         	
     		
     		
