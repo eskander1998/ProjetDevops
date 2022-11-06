@@ -50,8 +50,19 @@ pipeline {
                   
             }
         }
+        
+       
+        
+        stage('MVN') {
+            steps {
+            	
+                sh 'mvn package'
+                 
+            }
+        }
         stage('Build Docker Image Backend') {
             steps {
+            	
                 sh 'docker build -t goro1809/projetdevops-backend . '
                  
             }
