@@ -123,7 +123,7 @@
             <configuration>  
                 <archive>  
                     <manifest>  
-                        <mainClass>com.esprit.microservice.VeloMicroserviceApplication</mainClass>  
+                        <mainClass>com.esprit.examen.ProjetDevopsApplication</mainClass>  
                     </manifest>  
                 </archive>  
             </configuration>  
