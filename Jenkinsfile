@@ -65,10 +65,16 @@ pipeline {
             }
             
            	stage('Build image') {
-       		 sh"docker build -t fourat8/image ."
+           	steps {
+           	
+       		 sh "docker build -t fourat8/image ."
+       		}
     		}
  			stage('Push image') {
+ 			steps {
+ 			
         	 sh "docker push fourat8/image"
+        	}
         	}
     		}    
            
