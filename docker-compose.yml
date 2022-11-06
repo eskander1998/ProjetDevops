@@ -7,11 +7,12 @@ services:
    restart: unless-stopped
    environment:
      - MYSQL_DATABASE=devopsproj
+     - MYSQL_DATABASE=root
    ports:
-      - "4000:3306"
-   volumes:
-      - db:/var/lib/mysql
+      - "3306:3306"
+
  app:
+   image: projetimage 
    depends_on:
      - mysqldb
    build: .
@@ -28,8 +29,6 @@ services:
    stdin_open: true
    tty: true
     
-    
- 
-
+  
 volumes:
  db:
