@@ -1,9 +1,8 @@
 pipeline {
     agent any
-
     stages {
-
-       stage('check out git'){       
+			stage('check out git'){       
+            
             steps{
                 echo 'Pulling...';
                 git branch: 'ahmed',
@@ -29,20 +28,9 @@ pipeline {
                  
             }
         }
-        stage('MVN CLEAN install') {
-            steps {
-                sh 'mvn clean install'
-                 
-            }
-        }
+       
 
-	stage('MVN TEST') {
-            steps {
-		echo 'Testing ...';
-                sh 'mvn test -Dtest="StockServiceImplTest"'
-                 
-            }
-        }
+	
 
         stage('Testing from git') {
             steps {
@@ -80,10 +68,11 @@ pipeline {
                  
             }
         }
+        
         stage('Docker compose backend/mysql') {
             steps {
                 sh 'docker-compose up -d'
-                 
+                
             }
         }
 

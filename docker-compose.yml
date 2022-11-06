@@ -1,27 +1,25 @@
 version: "3.4"
 
 services:
-  mysqldb:
-    container_name: mysqldb
+  mysql-container3:
+    container_name: mysql-container3
     ports:
       - '3306:3306'
-    restart: unless-stopped
     environment:
       - MYSQL_DATABASE=1
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
     restart: always
     volumes:
-      - mysqldb:/var/lib/mysql:rw
+      - mysql-container3:/var/lib/mysql:rw
     image: 'mysql:latest'
-    
     
   projetdevops-backend:
     depends_on:
-      - mysqldb
+      - mysql-container3
     container_name: projetdevops-backend
     ports:
       - '8089:8089'
     image: goro1809/projetdevops-backend
-    
+
 volumes:
-  mysqldb:
+  mysql-container3: { }
