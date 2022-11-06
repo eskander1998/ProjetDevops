@@ -84,14 +84,6 @@ pipeline {
         	}
         	}
         	}
-        	stage('Cleaning up') {
- 			steps {
- 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
- 			
-        	 sh "docker rmi -f fourat8/image"
-        	}
-        	}
-        	}
         	stage('Run project') {
  			steps {
  			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
@@ -101,6 +93,15 @@ pipeline {
         	}
         	}
         	}
+        	stage('Cleaning up') {
+ 			steps {
+ 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+ 			
+        	 sh "docker rmi -f fourat8/image"
+        	}
+        	}
+        	}
+        	
     		
     		
     		 
