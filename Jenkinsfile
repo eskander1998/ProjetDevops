@@ -1,4 +1,9 @@
 pipeline {
+	environment {
+	 registry = "fourat8/image"
+	 registryCredential = 'dockerHub'
+	 dockerImage = ''
+	}
     agent any
     stages{
             stage('Checkout GIT'){
@@ -35,8 +40,14 @@ pipeline {
             }
             }
             
-            
-            
+         stage('Building image docker-compose') {
+            steps {
+                    sh "npm --prefix /var/lib/jenkins/workspace/uu/Angular/ run build --watch=true"
+                    sh "docker-compose up -d"
+           }
+           }
+           
+         
             
             
             stage('SonarQube analysis 1') {
@@ -61,7 +72,20 @@ pipeline {
 					nexusArtifactUploader artifacts: [[artifactId: 'ProjetDevops', classifier: '', file: 'target/ProjetDevops-1.0.jar', type: 'jar']], credentialsId: 'NEXUS_CRED', groupId: 'com.esprit.examen', nexusUrl: '192.168.1.123:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0.0-SNAPSHOT'
 				}
             }
-           
+           	
+           	 stage('Deploy our image') {
+             steps {
+              withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+              sh "docker tag image fourat8/image:image"
+              sh "docker push image/image:image"
+             }
+             }
+     		 }
+             stage('Cleaning up') {
+             steps {
+             sh "docker rmi -f $registry:$BUILD_NUMBER" 
+             }
+             }
             
             }
             
