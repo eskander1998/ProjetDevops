@@ -20,3 +20,6 @@ services:
     ports:
       - '8089:8089'
     image: goro1809/projetdevops-backend
+    
+volumes:
+  mysql-container: { }
