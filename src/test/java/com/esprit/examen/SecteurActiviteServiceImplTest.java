@@ -1,4 +1,5 @@
 package com.esprit.examen;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -33,47 +34,43 @@ SecteurActiviteServiceImpl SecteurActiviteService;
 
     }
 
-    //Testing retrieveSecteurActivite
-//    @Test
-//    public void testRetrieveSecteurActivites() {
-//        SecteurActivite o = new SecteurActivite();
-//        o.setNom("yas");
-//        o.setPrenom("mine");
-//        o.setPassword("pass");
-//        SecteurActivite savedSecteurActivite= SecteurActiviteService.addSecteurActivite(o);
-//        SecteurActivite getSecteurActivite= SecteurActiviteService.retrieveSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
-//        assertNotNull(savedSecteurActivite.getNom());
-//        assertNotNull(savedSecteurActivite.getPrenom());
-//        assertEquals(savedSecteurActivite.getIdSecteurActivite(),getSecteurActivite.getIdSecteurActivite());
-//
-//        SecteurActiviteService.deleteSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
-//    }
-//
-//
-//    //Testing updateSecteurActivite
-//    @Test
-//    public void testUpdateSecteurActivite() {
-//        SecteurActivite o = new SecteurActivite();
-//        o.setNom("ines");
-//        o.setPrenom("alioua");
-//        o.setPassword("pass");
-//        SecteurActivite savedSecteurActivite= SecteurActiviteService.addSecteurActivite(o);
-//        savedSecteurActivite.setNom("med");
-//        SecteurActiviteService.updateSecteurActivite(savedSecteurActivite);
-//        assertEquals(o.getNom(),savedSecteurActivite.getNom());
-//        SecteurActiviteService.deleteSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
-//    }
-//
-//    //Testing deleteSecteurActivite
-//    @Test
-//    public void testDeleteSecteurActivite() {
-//        SecteurActivite o = new SecteurActivite();
-//        o.setNom("nc");
-//        o.setPrenom("med");
-//        o.setPassword("pass");
-//        SecteurActivite savedSecteurActivite= SecteurActiviteService.addSecteurActivite(o);
-//        SecteurActiviteService.deleteSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
-//        assertNotNull(savedSecteurActivite.getIdSecteurActivite());
-//
-//    }
+    
+    @Test
+	public void testRetrieveSecteurActivite() {
+		SecteurActivite s = new SecteurActivite();
+		 s.setLibelleSecteurActivite("aa");
+	     s.setCodeSecteurActivite("bbb");
+		SecteurActivite savedSecteurActivite= SecteurActiviteService.addSecteurActivite(s);
+		SecteurActivite getSecteurActivite= SecteurActiviteService.retrieveSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
+		assertNotNull(savedSecteurActivite.getLibelleSecteurActivite());
+		assertNotNull(savedSecteurActivite.getCodeSecteurActivite());
+		assertEquals(savedSecteurActivite.getIdSecteurActivite(),getSecteurActivite.getIdSecteurActivite());
+		
+		SecteurActiviteService.deleteSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
+		}
+	
+	@Test
+	public void testUpdateSecteurActivite() {
+		SecteurActivite s = new SecteurActivite();
+		 s.setLibelleSecteurActivite("aa");
+	     s.setCodeSecteurActivite("bbb");
+		SecteurActivite savedSecteurActivite= SecteurActiviteService.addSecteurActivite(s);
+		savedSecteurActivite.setLibelleSecteurActivite("skander");;
+		SecteurActiviteService.updateSecteurActivite(savedSecteurActivite);
+		assertEquals(s.getLibelleSecteurActivite(),savedSecteurActivite.getLibelleSecteurActivite());
+		SecteurActiviteService.deleteSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
+		}
+	
+	@Test
+	public void testDeleteSecteurActivite() {
+		SecteurActivite s = new SecteurActivite();
+		s.setLibelleSecteurActivite("aa");
+	     s.setCodeSecteurActivite("bbb");
+		SecteurActivite savedService= SecteurActiviteService.addSecteurActivite(s);
+		SecteurActiviteService.deleteSecteurActivite(savedService.getIdSecteurActivite());
+		assertNotNull(savedService.getIdSecteurActivite());
+		
+	}
+
 }
+
