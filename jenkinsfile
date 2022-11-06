@@ -37,20 +37,7 @@ pipeline {
         }
         
         
- 		stage ('JUnit / Mockito Test'){
-            steps{
-                script
-                {
-                    if (isUnix())
-                    {
-                        sh 'mvn --batch-mode test'
-                    }
-                    else
-                    {
-                        bat 'mvn --batch-mode test'
-                    }
-                }
-                }}
+ 		
                 
        stage('NEXUS') {
             steps {
@@ -87,6 +74,12 @@ pipeline {
             }
         }
         
-        
+     post {
+        success {
+            emailext  body: 'Le pipeline que vous venez de lancer est achevé avec succé', recipientProviders: [buildUser()], subject: 'Build réussi', to: 'eskander.jguirim@esprit.tn'
+        }
+        failure{
+            emailext attachLog: true, body: 'Le pipeline que vous vener de lancez est achevé avec failure', recipientProviders: [buildUser()], subject: 'Build failed', to: 'eskander.jguirim@esprit.tn'
+        }
     }
-}
+    }
