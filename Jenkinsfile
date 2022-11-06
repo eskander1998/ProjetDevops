@@ -92,7 +92,17 @@ pipeline {
         	}
         	}
         	}
-    		 
+        	stage('Run project') {
+ 			steps {
+ 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+ 			
+        	 sh "docker pull fourat8/image"
+        	 sh "docker container run -it fourat8/image /bin/sh"
+        	}
+        	}
+        	}
+    		
+    		
     		 
            
             
