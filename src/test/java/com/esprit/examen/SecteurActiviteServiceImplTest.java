@@ -1,4 +1,4 @@
-package com.esprit.examen.services;
+package com.esprit.examen;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -9,17 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.esprit.examen.entities.SecteurActivite;
+import com.esprit.examen.services.SecteurActiviteServiceImpl;
 
 
 @SpringBootTest
-public class SecteurActiviteServiceJUnit {
+public class SecteurActiviteServiceImplTest {
 
-    @Autowired
-    SecteurActiviteServiceImpl SecteurActiviteService;
+@Autowired
+SecteurActiviteServiceImpl SecteurActiviteService;
 
     //testing Add method
     @Test
-    public void testAddSecteurActivite(){
+     void testAddSecteurActivite(){
         List<SecteurActivite> SecteurActivites = SecteurActiviteService.retrieveAllSecteurActivite();
         int expected = SecteurActivites.size();
         SecteurActivite o = new SecteurActivite();

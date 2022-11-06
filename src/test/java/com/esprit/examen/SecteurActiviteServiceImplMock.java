@@ -1,4 +1,4 @@
-package com.esprit.examen.services;
+package com.esprit.examen;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,12 +22,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.esprit.examen.entities.SecteurActivite;
+import com.esprit.examen.services.SecteurActiviteServiceImpl;
 
 
 
 
 @ExtendWith(MockitoExtension.class)
-public class SecteurActiviteImplMock {
+public class SecteurActiviteServiceImplMock {
 	
 	
 	@Mock
