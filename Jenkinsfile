@@ -22,21 +22,28 @@ pipeline {
             }
         }
 
-        stage('MVN COMPILE') {
+     stage('MVN COMPILE') {
             steps {
                 sh 'mvn compile'
                  
             }
         }
-       
 
-	
-
-        stage('Testing from git') {
-            steps {
-                sh "git --version"
-            }
-        }
+       stage ('JUnit / Mockito Test'){
+            steps{
+                script
+                {
+                    if (isUnix())
+                    {
+                        sh 'mvn --batch-mode test'
+                    }
+                    else
+                    {
+                        bat 'mvn --batch-mode test'
+                    }
+                }
+                }}
+                
 
 		stage('MVN SONARQUBE') {
             steps {
@@ -53,17 +60,10 @@ pipeline {
         
        
         
-        stage('MVN') {
+       
+       stage('Build Docker image Backend') {
             steps {
-            	
-                sh 'mvn package'
-                 
-            }
-        }
-        stage('Build Docker Image Backend') {
-            steps {
-            	
-                sh 'docker build -t goro1809/projetdevops-backend . '
+                sh 'docker build -t goro1809/projetdevopsbackend . '
                  
             }
         }
@@ -73,21 +73,20 @@ pipeline {
 			sh 'docker login -u goro1809 -p Amin2004Ahmed1999'
 			}
 			}
-        stage('Push Backend Image To Dockerhub') {
+        stage('Push image Backend to Dockerhub') {
             steps {
-                sh 'docker push goro1809/projetdevops-backend'
+                sh 'docker push goro1809/projetdevopsbackend'
                  
             }
         }
         
-        stage('Docker compose backend/mysql') {
+        
+         stage('Docker compose back/sql') {
             steps {
                 sh 'docker-compose up -d'
-                
+                 
             }
         }
-
-
 
     }
 }
