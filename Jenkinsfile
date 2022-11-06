@@ -29,20 +29,12 @@ pipeline {
             }
         }
 
-       stage ('JUnit / Mockito Test'){
-            steps{
-                script
-                {
-                    if (isUnix())
-                    {
-                        sh 'mvn --batch-mode test'
-                    }
-                    else
-                    {
-                        bat 'mvn --batch-mode test'
-                    }
-                }
-                }}
+   stage ('Test'){
+            steps {
+                echo 'Testing ...';
+                sh 'mvn test -Dtest="StockServiceImplTest"'
+            }
+        }
                 
 
 		stage('MVN SONARQUBE') {
