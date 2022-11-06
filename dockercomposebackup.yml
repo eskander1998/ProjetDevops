@@ -1,6 +1,24 @@
 version: "3.4"
 
 services:
+  sonarqube:
+    image: sonarqube:8.9.7-community
+    ports:
+      - "9001:9001"
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+    restart: unless-stopped
+
+  nexus:
+    image: sonatype/nexus3
+    ports:
+      - "8082:8082"
+    volumes:
+    - 'nexus-data:/nexus-data'
+    restart: unless-stopped
+    
   mysql-container:
     container_name: mysql-container
     ports:
@@ -24,3 +42,7 @@ services:
     
 volumes:
   mysql-container: { }
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
+  nexus-data:
