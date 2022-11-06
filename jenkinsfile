@@ -47,7 +47,7 @@ pipeline {
         }
         
         
-            stage('JUnit and Mockito Test'){
+           stage('JUnit and Mockito Test'){
             steps{
                 script
                 {
