@@ -82,4 +82,4 @@ pipeline {
             emailext attachLog: true, body: 'Le pipeline que vous vener de lancez est achevé avec failure', recipientProviders: [buildUser()], subject: 'Build failed', to: 'eskander.jguirim@esprit.tn'
         }
     }
-    }
+    }   }
