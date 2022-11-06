@@ -62,13 +62,13 @@ pipeline {
 				}
             }
            
-            
             }
+           
             stage('Deploy our image') {
             steps {
              withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
               sh "docker tag image fourat8/image:image"
-              sh "docker push image/image:image"
+              sh "docker push fourat/image:image"
             }
             }
      		}
