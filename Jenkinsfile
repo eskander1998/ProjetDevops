@@ -1,5 +1,4 @@
 pipeline {
-
     agent any
     stages{
             stage('Checkout GIT'){
@@ -30,11 +29,13 @@ pipeline {
             }
             }
 
-		    stage('Test unitaire') {
+		 stage('Test unitaire') {
             steps {
                     sh 'mvn test'
             }
             }
+            
+            
             
             
             
@@ -52,7 +53,7 @@ pipeline {
             }
             }
             
-            
+        
         
 		    stage('Publish to Nexus Repository Manager') {
             steps {
@@ -60,9 +61,17 @@ pipeline {
 					nexusArtifactUploader artifacts: [[artifactId: 'ProjetDevops', classifier: '', file: 'target/ProjetDevops-1.0.jar', type: 'jar']], credentialsId: 'NEXUS_CRED', groupId: 'com.esprit.examen', nexusUrl: '192.168.1.123:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0.0-SNAPSHOT'
 				}
             }
-           	
-        
-
+           
+            
+            }
+            stage('Deploy our image') {
+            steps {
+             withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+              sh "docker tag image fourat8/image:image"
+              sh "docker push image/image:image"
+            }
+            }
+     		}
             
     }
        
