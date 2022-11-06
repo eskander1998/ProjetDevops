@@ -71,10 +71,13 @@ pipeline {
             steps {
                 sh 'docker-compose up -d'
                  
-            }
+                  }
         }
-        
-     post {
+     
+   
+}
+
+post {
         success {
             emailext  body: 'Le pipeline que vous venez de lancer est achevé avec succé', recipientProviders: [buildUser()], subject: 'Build réussi', to: 'eskander.jguirim@esprit.tn'
         }
@@ -82,4 +85,4 @@ pipeline {
             emailext attachLog: true, body: 'Le pipeline que vous vener de lancez est achevé avec failure', recipientProviders: [buildUser()], subject: 'Build failed', to: 'eskander.jguirim@esprit.tn'
         }
     }
-    }   }
+    }
