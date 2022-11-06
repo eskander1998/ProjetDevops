@@ -122,7 +122,6 @@
           <version>3.0.0</version>
         </plugin>	
 		</plugins>
-		<finalName>ProjetDevops1.0</finalName>
 	</build>
 
 </project>
