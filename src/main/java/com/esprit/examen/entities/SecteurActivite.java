@@ -58,15 +58,9 @@ public class SecteurActivite implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
 	public SecteurActivite(String codeSecteurActivite, String libelleSecteurActivite) {
-		super();
 		this.codeSecteurActivite = codeSecteurActivite;
 		this.libelleSecteurActivite = libelleSecteurActivite;
 	}
-	public SecteurActivite() {
-		super();
-	}
-	
-	
-	
 }
