@@ -35,6 +35,23 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=adminadmin'
             }
         }
+        
+        
+ 		stage ('JUnit / Mockito Test'){
+            steps{
+                script
+                {
+                    if (isUnix())
+                    {
+                        sh 'mvn --batch-mode test'
+                    }
+                    else
+                    {
+                        bat 'mvn --batch-mode test'
+                    }
+                }
+                
+                
        stage('NEXUS') {
             steps {
                 sh 'mvn deploy -DskipTests'
