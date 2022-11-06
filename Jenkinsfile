@@ -22,6 +22,12 @@ pipeline {
                  
             }
         }
+    stage('MVN INSTALL') {
+            steps {
+                sh 'mvn install'
+                 
+            }
+        }
 
         stage('MVN COMPILE') {
             steps {
