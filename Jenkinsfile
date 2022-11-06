@@ -74,6 +74,12 @@ pipeline {
                  
             }
         }
+        stage('Docker compose backend/mysql') {
+            steps {
+                sh 'docker-compose up -d'
+                 
+            }
+        }
 
 
 
