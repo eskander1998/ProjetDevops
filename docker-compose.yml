@@ -10,7 +10,7 @@ services:
     volumes:
       - mysql-container3:/var/lib/mysql:rw
     image: 'mysql:latest'
-  achat-back:
+  projetdevops-backend:
     depends_on:
       - mysql-container3
     container_name: projetdevops-backend
