@@ -17,60 +17,23 @@ public class SecteurActiviteImplTest {
 
 	
 	@Autowired
-	ISecteurActiviteService secteurActiviteService;
-	
-	
+	ISecteurActiviteService SecteurActiviteService;
+
 	@Test
-	public void testAddFournisseur(){
-		List<SecteurActivite> secteurs = secteurActiviteService.retrieveAllSecteurActivite();
-		int expected = secteurs.size();
-		SecteurActivite s = new SecteurActivite();
-		s.setCodeSecteurActivite("codetest");
-		s.setLibelleSecteurActivite("LibelleSecteurActiviteTest");
-		SecteurActivite savedSecteurActiviteSecteurActivite= secteurActiviteService.addSecteurActivite(s);
-		assertEquals(expected+1, secteurActiviteService.retrieveAllSecteurActivite().size());
-		assertNotNull(savedSecteurActiviteSecteurActivite.getLibelleSecteurActivite());
-		secteurActiviteService.deleteSecteurActivite(savedSecteurActiviteSecteurActivite.getIdSecteurActivite());
-		
-	}
-	
-	
-	@Test
-	public void testRetrieveSecteurActivite() {
-		SecteurActivite s = new SecteurActivite();
-		s.setCodeSecteurActivite("codetest");
-		s.setLibelleSecteurActivite("LibelleSecteurActiviteTest");
-		SecteurActivite savedSecteurActivite= secteurActiviteService.addSecteurActivite(s);
-		SecteurActivite getSecteurActivite= secteurActiviteService.retrieveSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
+	public void testAddOperateur(){
+		List<SecteurActivite> SecteurActivites = SecteurActiviteService.retrieveAllSecteurActivite();
+		int expected = SecteurActivites.size();
+		SecteurActivite o = new SecteurActivite();
+		o.setLibelleSecteurActivite("lib");
+		o.setCodeSecteurActivite("code");
+		SecteurActivite savedSecteurActivite= SecteurActiviteService.addSecteurActivite(o);
+		assertEquals(expected+1, SecteurActiviteService.retrieveAllSecteurActivite().size());
 		assertNotNull(savedSecteurActivite.getLibelleSecteurActivite());
-		assertNotNull(savedSecteurActivite.getCodeSecteurActivite());
-		assertEquals(savedSecteurActivite.getIdSecteurActivite(),getSecteurActivite.getIdSecteurActivite());
-		
-		secteurActiviteService.deleteSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
-		}
-	
-	@Test
-	public void testUpdateSecteurActivite() {
-		SecteurActivite s = new SecteurActivite();
-		s.setCodeSecteurActivite("codetest");
-		s.setLibelleSecteurActivite("LibelleSecteurActiviteTest");
-		SecteurActivite savedSecteurActivite= secteurActiviteService.addSecteurActivite(s);
-		savedSecteurActivite.setLibelleSecteurActivite("eskander");;
-		secteurActiviteService.updateSecteurActivite(savedSecteurActivite);
-		assertEquals(s.getLibelleSecteurActivite(),savedSecteurActivite.getLibelleSecteurActivite());
-		secteurActiviteService.deleteSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
-		}
-	
-	@Test
-	public void testDeleteSecteurActivite() {
-		SecteurActivite s = new SecteurActivite();
-		s.setCodeSecteurActivite("codetest");
-		s.setLibelleSecteurActivite("LibelleSecteurActiviteTest");
-		SecteurActivite savedService= secteurActiviteService.addSecteurActivite(s);
-		secteurActiviteService.deleteSecteurActivite(savedService.getIdSecteurActivite());
-		assertNotNull(savedService.getIdSecteurActivite());
-		
+		SecteurActiviteService.deleteSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
+
 	}
+
+
 	
 	
 }

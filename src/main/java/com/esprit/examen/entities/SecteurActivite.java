@@ -17,7 +17,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class SecteurActivite implements Serializable{
 	/**
 	 * 
@@ -57,6 +56,9 @@ public class SecteurActivite implements Serializable{
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public SecteurActivite() {
 	}
 
 	public SecteurActivite(String codeSecteurActivite, String libelleSecteurActivite) {
