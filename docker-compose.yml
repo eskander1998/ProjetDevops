@@ -1,26 +1,22 @@
-version: "3.4"
-
 services:
-  mysql-container:
-    container_name: mysql-container
+  mysql-container3:
+    container_name: mysql-container3
     ports:
       - '3306:3306'
     environment:
-      MYSQL_DATABASE: projetdevops
-      MYSQL_USER: root
-      MYSQL_PASSWORD:
+      - MYSQL_DATABASE=1
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
     restart: always
     volumes:
-      - mysql-container:/var/lib/mysql:rw
+      - mysql-container3:/var/lib/mysql:rw
     image: 'mysql:latest'
-    
-  projetdevops-backend:
+  achat-back:
     depends_on:
-      - mysql-container
-    container_name: projetdevops-backend
+      - mysql-container3
+    container_name: achat-backend
     ports:
       - '8089:8089'
-    image: goro1809/projetdevops-backend
-    
+    image: goro1809/achat-backend
+
 volumes:
-  mysql-container: { }
+  mysql-container3: { }
