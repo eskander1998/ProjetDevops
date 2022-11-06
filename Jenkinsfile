@@ -34,20 +34,12 @@ pipeline {
             }
             }
 
-		 stage('Test unitaire') {
+		    stage('Test unitaire') {
             steps {
                     sh 'mvn test'
             }
             }
             
-         stage('Building image docker-compose') {
-            steps {
-                    sh "npm --prefix /var/lib/jenkins/workspace/uu/Angular/ run build --watch=true"
-                    sh "docker-compose up -d"
-           }
-           }
-           
-         
             
             
             stage('SonarQube analysis 1') {
@@ -64,7 +56,7 @@ pipeline {
             }
             }
             
-        
+            
         
 		    stage('Publish to Nexus Repository Manager') {
             steps {
@@ -73,7 +65,7 @@ pipeline {
 				}
             }
            	
-           	 stage('Deploy our image') {
+           	stage('Deploy our image') {
              steps {
               withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
               sh "docker tag image fourat8/image:image"
@@ -83,7 +75,7 @@ pipeline {
      		 }
              stage('Cleaning up') {
              steps {
-             sh "docker rmi -f $registry:$BUILD_NUMBER" 
+              sh "docker rmi -f $registry:$BUILD_NUMBER" 
              }
              }
             
