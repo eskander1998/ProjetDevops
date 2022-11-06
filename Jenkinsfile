@@ -76,7 +76,7 @@ pipeline {
         	 sh "docker push fourat8/image"
         	}
         	}
-    		}    
+    		 
            
             
     }
