@@ -1,9 +1,5 @@
 pipeline {
-	environment {
-	 registry = "fourat8/image"
-	 registryCredential = 'dockerHub'
-	 dockerImage = ''
-	}
+
     agent any
     stages{
             stage('Checkout GIT'){
@@ -73,13 +69,7 @@ pipeline {
              }
              }
      		 }
-             stage('Cleaning up') {
-             steps {
-              sh "docker rmi -f $registry:$BUILD_NUMBER" 
-             }
-             }
-            
-            }
+
             
     }
        
