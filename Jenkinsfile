@@ -65,21 +65,13 @@ pipeline {
             }
             
            	stage('Build image') {
-       		 dockerImage = docker.build("fourat8/image:latest")
+       		 sh"docker build -t fourat8/image ."
     		}
  			stage('Push image') {
-        	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
-        	 dockerImage.push()
+        	 sh "docker push fourat8/image"
         	}
     		}    
-            stage('Deploy our image') {
-            steps {
-             withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
-              sh "docker tag image fourat8/image:image"
-              sh "docker push fourat/image:image"
-            }
-            }
-     		}
+           
             
     }
        
