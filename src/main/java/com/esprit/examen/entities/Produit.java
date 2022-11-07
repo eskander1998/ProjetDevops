@@ -62,9 +62,7 @@ public class Produit implements Serializable {
 	public String getLibelleProduit() {
 		return libelleProduit;
 	}
-	public void setLibelleProduit(String libelleProduit) {
-		this.libelleProduit = libelleProduit;
-	}
+	
 	public float getPrix() {
 		return prix;
 	}
@@ -113,26 +111,11 @@ public class Produit implements Serializable {
 		this.libelleProduit = libelleProduit;
 		this.prix = prix;
 	}
-	public Produit(Long idProduit, String codeProduit, String libelleProduit, float prix, Date dateCreation,
-			Date dateDerniereModification, Stock stock, Set<DetailFacture> detailFacture,
-			CategorieProduit categorieProduit) {
-		super();
-		this.idProduit = idProduit;
-		this.codeProduit = codeProduit;
-		this.libelleProduit = libelleProduit;
-		this.prix = prix;
-		this.dateCreation = dateCreation;
-		this.dateDerniereModification = dateDerniereModification;
-		this.stock = stock;
-		this.detailFacture = detailFacture;
-		this.categorieProduit = categorieProduit;
-	}
+	
 	public Produit(long l, Object object, Object object2, Object object3, Object object4, Object object5, Object object6, Object object7, Object object8, Object object9) {
 		super();
 	}
-	public Produit() {
-		// TODO Auto-generated constructor stub
-	}
+	
 	
 	
 
