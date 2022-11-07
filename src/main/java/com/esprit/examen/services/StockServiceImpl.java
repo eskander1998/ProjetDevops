@@ -19,44 +19,33 @@ public class StockServiceImpl implements IStockService {
 
 	@Override
 	public List<Stock> retrieveAllStocks() {
-	
 		List<Stock> stocks = (List<Stock>) stockRepository.findAll();
 		for (Stock stock : stocks) {
-	
 		}
-
 		return stocks;
 	}
 
 	@Override
 	public Stock addStock(Stock s) {
-	
 		return stockRepository.save(s);
 		
 	}
 
 	@Override
 	public void deleteStock(Long stockId) {
-	
 		stockRepository.deleteById(stockId);
-
 	}
 
 	@Override
 	public Stock updateStock(Stock s) {
-	
 		return stockRepository.save(s);
 	}
 
 	@Override
 	public Stock retrieveStock(Long stockId) {
 		long start = System.currentTimeMillis();
-	
 		Stock stock = stockRepository.findById(stockId).orElse(null);
-
-		 long elapsedTime = System.currentTimeMillis() - start;
-	
-
+		long elapsedTime = System.currentTimeMillis() - start;
 		return stock;
 	}
 
@@ -68,7 +57,6 @@ public class StockServiceImpl implements IStockService {
 		String finalMessage = "";
 		String newLine = System.getProperty("line.separator");
 		List<Stock> stocksEnRouge = (List<Stock>) stockRepository.retrieveStatusStock();
-		
 		return finalMessage;
 	}
 
