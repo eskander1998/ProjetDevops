@@ -38,17 +38,14 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=ProduitServiceImplTest.class)
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest
+
 
 public class ProduitServiceImplTest {
 	
 	@Autowired
     IProduitService produitService;
-	@Mock
-    ProduitRepository produitRepository;
-	@InjectMocks
-	ProduitServiceImpl PSI;
+
 
     @Test
     public void testRetrieveAllProduit() throws ParseException {
@@ -59,14 +56,14 @@ public class ProduitServiceImplTest {
       Date date12 = dateFormat.parse("30/09/2010");
       Produit sa = new Produit(date11, date12);
       Produit savedProduit = produitService.addProduit(sa);
-      log.info(" Produit : " + sa);
+      //log.info(" Produit : " + sa);
 
       assertNotNull(sa.getIdProduit());
 
       produitService.retrieveProduit(sa.getIdProduit());
 
       List<Produit> Produits = produitService.retrieveAllProduits();
-      log.info("Les  Produits : " + Produits);
+      //log.info("Les  Produits : " + Produits);
    }
 @Test
 public void testDeleteProduit() throws ParseException {
@@ -89,22 +86,17 @@ public void testAddProduit() throws ParseException{
    Date date1 = dateFormat.parse("10/02/2020");
    Date date2 = dateFormat.parse("12/09/2022");
    Produit p = new Produit(date1, date2);
-   log.info("produit \n "+p);
+   //log.info("produit \n "+p);
 
    Produit savedProduit= produitService.addProduit(p);
-   log.info("size1 "+Produits.size());
+   //log.info("size1 "+Produits.size());
    System.out.print("size1 "+Produits.size());
    produitService.deleteProduit(savedProduit.getIdProduit());
    List<Produit> Produits1 = produitService.retrieveAllProduits();
 
    log.info("size2 "+Produits1.size());
 }
-void addProduit(){
-	Produit produit = new Produit();
-    Mockito.doReturn(produit).when(produitRepository).save(produit);
-    Produit produit1 = PSI.addProduit(produit);
-    Assertions.assertNotNull(produit1);
-    }
+
 	
 
 }
