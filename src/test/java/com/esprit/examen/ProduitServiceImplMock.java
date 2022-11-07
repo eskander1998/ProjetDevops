@@ -43,12 +43,18 @@ public class ProduitServiceImplMock {
 	};
 	
 	
-	@Test
-	public void testRetrieveUser() {
+	//@Test
+	//public void testRetrieveUser() {
 
-	Mockito.when(produitRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(produit))
-	;
-	Produit produit1 = produitService.retrieveProduit((long) 2);
-	Assertions.assertNotNull(produit1);
-	}
+	//Mockito.when(produitRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(produit))
+	//;
+	//Produit produit1 = produitService.retrieveProduit((long) 2);
+	//Assertions.assertNotNull(produit1);
+	//}
+	@Test
+    void retrieveAllProduits(){
+        Mockito.when(produitRepository.findAll()).thenReturn(listProduits);
+        List<Produit> list = produitService.retrieveAllProduits();
+        Assertions.assertNotNull(list);
+    }
 }
