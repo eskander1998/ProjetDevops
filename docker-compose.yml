@@ -12,8 +12,7 @@ services:
       - db:/var/lib/mysql
   app:
     build: .   
-    depends_on:
-      - mysqldb
+    
     restart: on-failure
     ports:
       - "8089:8089"
