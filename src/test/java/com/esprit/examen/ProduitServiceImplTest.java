@@ -38,11 +38,15 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes=ProduitServiceImplTest.class)
+@ExtendWith(MockitoExtension.class)
 public class ProduitServiceImplTest {
     @Autowired
        IProduitService produitService;
-
+    @Mock
+    	ProduitRepository produitRepository;
+	@InjectMocks
+		ProduitServiceImpl PSI;
        @Test
        public void testRetrieveAllProduit() throws ParseException {
 
@@ -92,4 +96,11 @@ public class ProduitServiceImplTest {
 
       log.info("size2 "+Produits1.size());
    }
+   @Test
+	void addProduit(){
+		Produit produit = new Produit("produit test",10);
+	    Mockito.doReturn(produit).when(produitRepository).save(produit);
+	    Produit produit1 = PSI.addProduit(produit);
+	    Assertions.assertNotNull(produit1);
+	    }
 }
