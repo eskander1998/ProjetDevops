@@ -39,14 +39,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=ProduitServiceImplTest.class)
-@ExtendWith(MockitoExtension.class)
+
 public class ProduitServiceImplTest {
     @Autowired
        IProduitService produitService;
-    @Mock
-    	ProduitRepository produitRepository;
-	@InjectMocks
-		ProduitServiceImpl PSI;
+  
        @Test
        public void testRetrieveAllProduit() throws ParseException {
 
