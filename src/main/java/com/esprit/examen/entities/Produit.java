@@ -62,7 +62,9 @@ public class Produit implements Serializable {
 	public String getLibelleProduit() {
 		return libelleProduit;
 	}
-	
+	public void setLibelleProduit(String libelleProduit) {
+		this.libelleProduit = libelleProduit;
+	}
 	public float getPrix() {
 		return prix;
 	}
