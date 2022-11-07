@@ -35,12 +35,7 @@ pipeline {
                 sh 'mvn test -Dtest="ProduitServiceImplMock"'
             }
         }
-    stage ('Test JUINT'){
-            steps {
-                echo 'Testing ...';
-                sh 'mvn test -Dtest="ProduitServiceImplTest"'
-            }
-        }
+   
                 
 
 		stage('MVN SONARQUBE') {
