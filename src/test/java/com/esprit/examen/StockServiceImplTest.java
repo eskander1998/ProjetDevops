@@ -32,10 +32,10 @@ import com.esprit.examen.services.StockServiceImpl;
 @SpringBootTest(classes=StockServiceImplTest.class)
 @ExtendWith(MockitoExtension.class)
 public class StockServiceImplTest {
-	//@Mock
-    //StockRepository stockRepository;
-	//@InjectMocks
-	// StockServiceImpl STI;
+	@Mock
+    StockRepository stockRepository;
+	@InjectMocks
+	StockServiceImpl STI;
 	
 //	 Stock stock = new Stock("libelleStock1", 10, 3);
 	    //List<Stock> listStocks = new ArrayList<Stock>() {
@@ -58,20 +58,20 @@ public class StockServiceImplTest {
         //List<Stock> list = STI.retrieveAllStocks();
       //  Assertions.assertNotNull(list);
     //}
-	//@Test
-	//void addStock(){
-		//Stock stock = new Stock("stock test",10,100);
-	    //Mockito.doReturn(stock).when(stockRepository).save(stock);
-	    //Stock stock1 = STI.addStock(stock);
-	    //Assertions.assertNotNull(stock1);
-	    //}
-	//@Test
-	//public void testAddStock() {
-		//Stock s = new Stock("stock test",10,100);
-		//Stock savedStock= STI.addStock(s);		
-		//assertNotNull(savedStock.getLibelleStock());
-		//STI.deleteStock(savedStock.getIdStock());
-	//} 
+	@Test
+	void addStock(){
+		Stock stock = new Stock("stock test",10,100);
+	    Mockito.doReturn(stock).when(stockRepository).save(stock);
+	    Stock stock1 = STI.addStock(stock);
+	    Assertions.assertNotNull(stock1);
+	    }
+	@Test
+	public void testAddStock() {
+		Stock s = new Stock("stock test",10,100);
+		Stock savedStock= STI.addStock(s);		
+		assertNotNull(savedStock.getLibelleStock());
+		STI.deleteStock(savedStock.getIdStock());
+	} 
 	
 	//@Test
 	//public void testDeleteStock() {
