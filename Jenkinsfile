@@ -15,12 +15,7 @@ pipeline {
                  
             }
             }
-            stage('Docker compose') {
-            steps {
-                sh 'docker-compose up -d' 
-            }
-            }
-       
+            
             stage('MVN CLEAN') {
             steps {
                 sh 'mvn clean'
@@ -85,22 +80,15 @@ pipeline {
         	}
         	}
         	}
-        	stage('pull project') {
- 			steps {
- 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
- 			
-        	 sh "docker pull fourat8/image"
-        	}
-        	}
-        	}
-        		stage('Run project') {
- 			steps {
- 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
- 			
-        	 sh "docker container run fourat8/image /bin/sh"
-        	}
-        	}
-        	}
+        	
+        	
+        	stage('Docker compose') {
+            steps {
+                sh 'docker-compose up -d' 
+            }
+            }
+       	    
+       	  
         	
         	stage('Cleaning up') {
  			steps {
