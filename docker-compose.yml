@@ -18,6 +18,6 @@ services:
     image: "mysql:5.6"
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=tpachato
+      - MYSQL_DATABASE=devopsproj
     ports:
       - 3308:3306
