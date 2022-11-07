@@ -76,10 +76,10 @@ public class ProduitServiceImplMock {
 	public void updatetproduitTest() {
 		Produit op = new Produit((long)1,null,null,null, null,null,null,null,null,null);
 		Mockito.when(produitRepository.save(Mockito.any(Produit.class))).thenReturn(op);
-		op.setLibelleProduit("mohamed");;
+		op.setLibelleProduit("ahmed");;
 		Produit exisitingOp= produitService.updateProduit(op) ;
 		
 		assertNotNull(exisitingOp);
-		assertEquals("mohamed", op.getLibelleProduit());
+		assertEquals("ahmed", op.getLibelleProduit());
 	}
 }
