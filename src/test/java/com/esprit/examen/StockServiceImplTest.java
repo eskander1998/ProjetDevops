@@ -32,39 +32,39 @@ import com.esprit.examen.services.StockServiceImpl;
 @SpringBootTest(classes=StockServiceImplTest.class)
 @ExtendWith(MockitoExtension.class)
 public class StockServiceImplTest {
-	@Mock
-    StockRepository stockRepository;
-	@InjectMocks
-	 StockServiceImpl STI;
+	//@Mock
+    //StockRepository stockRepository;
+	//@InjectMocks
+	// StockServiceImpl STI;
 	
-	 Stock stock = new Stock("libelleStock1", 10, 3);
-	    List<Stock> listStocks = new ArrayList<Stock>() {
-	        {
-	            add(new Stock("libelleStock2", 20, 5));
-	            add(new Stock("libelleStock3", 30, 8));
-	        }
-	    };
+//	 Stock stock = new Stock("libelleStock1", 10, 3);
+	    //List<Stock> listStocks = new ArrayList<Stock>() {
+	        //{
+	        //    add(new Stock("libelleStock2", 20, 5));
+	      //      add(new Stock("libelleStock3", 30, 8));
+	    //    }
+	  //  };
 	
 	
-	@Test
-	void retrieveStock() {
-	    Mockito.when(stockRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(stock));
-	    Stock stock1 = STI.retrieveStock(0L);
-	    Assertions.assertNotNull(stock1);
-	}
-	@Test
-    void retrieveAllStocks(){
-        Mockito.when(stockRepository.findAll()).thenReturn(listStocks);
-        List<Stock> list = STI.retrieveAllStocks();
-        Assertions.assertNotNull(list);
-    }
-	@Test
-	void addStock(){
-		Stock stock = new Stock("stock test",10,100);
-	    Mockito.doReturn(stock).when(stockRepository).save(stock);
-	    Stock stock1 = STI.addStock(stock);
-	    Assertions.assertNotNull(stock1);
-	    }
+	//@Test
+	//void retrieveStock() {
+	    //Mockito.when(stockRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(stock));
+	    //Stock stock1 = STI.retrieveStock(0L);
+	  //  Assertions.assertNotNull(stock1);
+	//}
+	//@Test
+    //void retrieveAllStocks(){
+        //Mockito.when(stockRepository.findAll()).thenReturn(listStocks);
+        //List<Stock> list = STI.retrieveAllStocks();
+      //  Assertions.assertNotNull(list);
+    //}
+	//@Test
+	//void addStock(){
+		//Stock stock = new Stock("stock test",10,100);
+	    //Mockito.doReturn(stock).when(stockRepository).save(stock);
+	    //Stock stock1 = STI.addStock(stock);
+	    //Assertions.assertNotNull(stock1);
+	    //}
 	//@Test
 	//public void testAddStock() {
 		//Stock s = new Stock("stock test",10,100);
