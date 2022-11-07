@@ -24,7 +24,7 @@ services:
     image: goro1809/projetdevopsbackend
     environment:
      SPRING_APPLICATION_JSON: '{
-       "spring.datasource.url"  : "jdbc:mysql://mysqldb:3306/projetdevops?useSSL=false",
+       "spring.datasource.url"  : "jdbc:mysql://mysql-container3:3306/projetdevops?useSSL=false",
        "spring.datasource.username" : "root",
        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
        "spring.jpa.hibernate.ddl-auto" : "update"}'
