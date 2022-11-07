@@ -30,6 +30,14 @@ services:
        "spring.jpa.hibernate.ddl-auto" : "update"}'
     stdin_open: true
     tty: true
+    
+  projetdevopsfrontend:
+    depends_on:
+      - projetdevopsbackend
+    container_name: projetdevopsfrontend
+    ports:
+      - '4200:80'
+    image: goro1809/projetdevopsfrontend
 
 volumes:
   db:

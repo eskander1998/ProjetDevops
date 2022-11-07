@@ -73,7 +73,7 @@ pipeline {
         }
         
         
-         stage('Docker compose back/sql') {
+         stage('Docker compose front/back/sql') {
             steps {
                 sh 'docker-compose up -d'
                  
