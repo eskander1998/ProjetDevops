@@ -101,10 +101,10 @@ pipeline {
 
 post {
         success {
-            emailext  body: 'Le pipeline que vous venez de lancer est achevé avec succé', recipientProviders: [buildUser()], subject: 'Build réussi', to: 'eskander.jguirim@esprit.tn'
+            emailext  body: 'Le pipeline que vous avez lancé a été effectué avec succés', recipientProviders: [buildUser()], subject: 'Build réussi', to: 'eskander.jguirim@esprit.tn'
         }
         failure{
-            emailext attachLog: true, body: 'Le pipeline que vous vener de lancez est achevé avec failure', recipientProviders: [buildUser()], subject: 'Build failed', to: 'eskander.jguirim@esprit.tn'
+            emailext attachLog: true, body: 'Le pipeline que vous avez lancé n a pas été avec succes', recipientProviders: [buildUser()], subject: 'Build failed', to: 'eskander.jguirim@esprit.tn'
         }
     }
     }
