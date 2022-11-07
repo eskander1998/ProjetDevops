@@ -65,13 +65,13 @@ public class StockServiceImplTest {
 	    Stock stock1 = STI.addStock(stock);
 	    Assertions.assertNotNull(stock1);
 	    }
-	@Test
-	public void testAddStock() {
-		Stock s = new Stock("stock test",10,100);
-		Stock savedStock= STI.addStock(s);		
-		assertNotNull(savedStock.getLibelleStock());
-		STI.deleteStock(savedStock.getIdStock());
-	} 
+	//@Test
+	//public void testAddStock() {
+		//Stock s = new Stock("stock test",10,100);
+		//Stock savedStock= STI.addStock(s);		
+		//assertNotNull(savedStock.getLibelleStock());
+		//STI.deleteStock(savedStock.getIdStock());
+	//} 
 	
 	//@Test
 	//public void testDeleteStock() {
