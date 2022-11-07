@@ -10,6 +10,7 @@ pipeline {
                         url : 'https://github.com/eskander1998/ProjetDevops'
                     }
                 }
+                
        stage('Testing maven') {
             steps {
                 sh """mvn -version"""
@@ -23,6 +24,7 @@ pipeline {
                  
             }
         }
+        
         stage('MVN COMPILE') {
             steps {
                 sh 'mvn compile'
@@ -52,17 +54,8 @@ pipeline {
     
    stage('JUnit and Mockito Test'){
             steps{
-                script
-                {
-                    if (isUnix())
-                    {
                         sh 'mvn --batch-mode test'
-                    }
-                    else
-                    {
-                        bat 'mvn --batch-mode test'
-                    }
-                }
+
             }
         
     }
@@ -74,12 +67,15 @@ pipeline {
                  
             }
         }
+        
         stage('Login Dockerhub') {
 
 			steps {
 			sh 'docker login -u eskanderjguirim -p docker123'
 			}
 			}
+			
+			
         stage('Push image Backend to Dockerhub') {
             steps {
                 sh 'docker push eskanderjguirim/projetdevops-backend'

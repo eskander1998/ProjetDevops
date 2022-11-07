@@ -36,7 +36,7 @@ public class SecteurActiviteServiceImplMock {
     
     
     @Test
-	 void retrieveAllSecteurActiviteTest() {
+	 void testRetrieveSecteurActivite() {
 		when(SecteurActiviteRepository.findAll()).thenReturn(Stream.of(
                 new SecteurActivite("codeSecteurActivite2", "libelleSecteurActivite2"),
                 new SecteurActivite("codeSecteurActivite3", "libelleSecteurActivite3"),
@@ -47,7 +47,7 @@ public class SecteurActiviteServiceImplMock {
 	}
     
     @Test
-	 void addSecteurActiviteTest() {
+	 void testAddSecteurActivite() {
     	SecteurActivite ss =  new SecteurActivite("codeSecteurActivite2", "libelleSecteurActivite2");
 
 		when(SecteurActiviteRepository.save(ss)).thenReturn(ss);
@@ -56,7 +56,7 @@ public class SecteurActiviteServiceImplMock {
     
     
     @Test
-	 void deleteSecteurActiviteTest() {
+	 void testDeleteSecteurActivite() {
     	SecteurActivite ss =  new SecteurActivite("codeSecteurActivite2", "libelleSecteurActivite2");
     	SecteurActiviteService.deleteSecteurActivite((long) 1);
 		verify(SecteurActiviteRepository).deleteById((long) 1);
@@ -64,7 +64,7 @@ public class SecteurActiviteServiceImplMock {
 	}
     
     @Test
-	 void updatetSecteurActiviteTest() {
+	 void testUpdateSecteurActivite() {
     	SecteurActivite ss =  new SecteurActivite("codeSecteurActivite2", "libelleSecteurActivite2");
 		Mockito.when(SecteurActiviteRepository.save(Mockito.any(SecteurActivite.class))).thenReturn(ss);
 		ss.setLibelleSecteurActivite("eskanderrrr");
