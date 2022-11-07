@@ -30,13 +30,17 @@ pipeline {
             }
 			
 			
-		 stage('Test unitaire') {
+		    stage('Test unitaire') {
             steps {
                     sh 'mvn test'
             }
             }
             
-            
+            stage("Email"){
+            steps{
+               emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'fourat.anane@esprit.tn'
+            }
+       	    }
             
             
             

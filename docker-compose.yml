@@ -11,7 +11,7 @@ services:
     volumes:
       - db:/var/lib/mysql
   app:
-    image: fourat8/image:image
+    build: .   
     depends_on:
       - mysqldb
     restart: on-failure
