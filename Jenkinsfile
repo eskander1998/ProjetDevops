@@ -38,7 +38,7 @@ pipeline {
     stage ('Test JUINT'){
             steps {
                 echo 'Testing ...';
-                sh 'mvn test -Dtest="ProduitServiceImplTest"'
+                sh 'mvn test -Dtest="ProduitServiceImplMock"'
             }
         }
                 
