@@ -9,15 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class Stock implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -35,22 +33,6 @@ public class Stock implements Serializable {
 		this.libelleStock = libelleStock;
 		this.qte = qte;
 		this.qteMin = qteMin;
-	}
-	public Integer getQte() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public String getLibelleStock() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public Integer getQteMin() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public Long getIdStock() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 
