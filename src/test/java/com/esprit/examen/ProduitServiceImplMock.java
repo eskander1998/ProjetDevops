@@ -7,9 +7,17 @@ import com.esprit.examen.services.IProduitService;
 import com.esprit.examen.services.ProduitServiceImpl;
 import com.esprit.examen.services.StockServiceImpl;
 
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,41 +28,58 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+
 @ExtendWith(MockitoExtension.class)
 public class ProduitServiceImplMock {
 	@Mock
 	ProduitRepository produitRepository;
-	
+
 	@InjectMocks
 	ProduitServiceImpl produitService;
-	
-	
-	
-	
-	
-	
-	Produit produit = new Produit("p1", 10);
-	List<Produit> listProduits = new ArrayList<Produit>() {
-	{
-	add(new Produit("p2", 20));
-	add(new Produit("p3", 30));
-	}
-	};
-	
-	
-	//@Test
-	//public void testRetrieveUser() {
 
-	//Mockito.when(produitRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(produit))
-	//;
-	//Produit produit1 = produitService.retrieveProduit((long) 2);
-	//Assertions.assertNotNull(produit1);
-	//}
 	@Test
-    void retrieveAllProduits(){
-        Mockito.when(produitRepository.findAll()).thenReturn(listProduits);
-        List<Produit> list = produitService.retrieveAllProduits();
-        Assertions.assertNotNull(list);
-    }
+	public void retrieveAllproduitsTest() {
+		when(produitRepository.findAll()).thenReturn(Stream.of(
+                new Produit((long)1,null,null,null, null,null,null,null,null,null),
+                new Produit((long)2,null,null,null, null,null,null,null,null,null), 
+				new Produit((long)3,null,null,null, null,null,null,null,null,null))
+                .collect(Collectors.toList()));
+		assertEquals(3,produitService.retrieveAllProduits().size());
+		
+	}
+
+	@Test
+	public void addproduitTest() {
+		Produit op = new Produit((long)1,null,null,null, null,null,null,null,null,null);
+		when(produitRepository.save(op)).thenReturn(op);
+		assertEquals(op, produitService.addProduit(op));
+	}
+
+	@Test
+	public void retreiveproduitTest() {
+		Produit op = new Produit((long)1,null,null,null, null,null,null,null,null,null);
+		when(produitRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(op));
+		Produit op1 = produitService.retrieveProduit((long) 2);
+		Assertions.assertNotNull(op1);
+
+	}
+
+	@Test
+	public void deleteproduitTest() {
+		Produit op = new Produit((long)1,null,null,null, null,null,null,null,null,null);
+		produitService.deleteProduit((long) 1);
+		verify(produitRepository).deleteById((long) 1);
+
+	}
+
+	@Test
+	public void updatetproduitTest() {
+		Produit op = new Produit((long)1,null,null,null, null,null,null,null,null,null);
+		Mockito.when(produitRepository.save(Mockito.any(Produit.class))).thenReturn(op);
+		op.setLibelleProduit("mohamed");;
+		Produit exisitingOp= produitService.updateProduit(op) ;
+		
+		assertNotNull(exisitingOp);
+		assertEquals("mohamed", op.getLibelleProduit());
+	}
 }
