@@ -29,13 +29,13 @@ pipeline {
             }
         }
 
-   stage ('Test MOKITO){
+   stage ('Test MOKITO'){
             steps {
                 echo 'Testing ...';
                 sh 'mvn test -Dtest="ProduitServiceImplMock"'
             }
         }
-    stage ('Test JUINT){
+    stage ('Test JUINT'){
             steps {
                 echo 'Testing ...';
                 sh 'mvn test -Dtest="ProduitServiceImplTest"'
