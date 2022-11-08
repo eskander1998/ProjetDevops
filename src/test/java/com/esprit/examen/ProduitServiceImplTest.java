@@ -86,7 +86,6 @@ public class ProduitServiceImplTest {
  public void testUpdateProduit() {
  Produit p = new Produit();
  p.setLibelleProduit("test");
- p.setLibelleProduit("test");
  p.setCodeProduit("codeProduit");
  p.setPrix(10);
  Date m = new Date(2022,11,05);
