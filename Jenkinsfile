@@ -30,24 +30,10 @@ pipeline {
             }
 			
 			
-		    stage('Test unitaire') {
-            steps {
-                    sh 'mvn test'
-            }
-            }
-            
-            stage("Email"){
-            steps{
-               emailext attachLog: true, body: "the result is :  ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'fourat.anane@esprit.tn'
-            }
-            } 
+		 
             
             
-            stage('SonarQube analysis 1') {
-            steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=fourat'
-            }
-            }
+           
             
               
             
@@ -67,6 +53,12 @@ pipeline {
 				}
             }
            		
+            }
+            
+            stage('Test unitaire') {
+            steps {
+                    sh 'mvn test'
+            }
             }
             
             stage('Build image') {
@@ -91,6 +83,11 @@ pipeline {
             }
             }
        	    
+       	    stage('SonarQube analysis 1') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=fourat'
+            }
+            }
        	  
         
         	
