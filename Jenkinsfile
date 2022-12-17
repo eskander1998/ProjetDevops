@@ -45,7 +45,13 @@ pipeline {
             }
         	}
             
-           
+           	stage('Login Dockerhub') {
+
+			steps {
+			sh 'docker login -u fourat8 -p Ratfat113'
+			}
+			}
+			
             
             stage('Build image') {
            	steps {
