@@ -15,7 +15,7 @@ services:
   app:
     build: .   
     depends_on:
-      - mysqldb
+      - mysql-container3
     restart: on-failure
     ports:
       - "8089:8089"

@@ -92,16 +92,7 @@ pipeline {
             }
        	    
        	  
-        	
-        	stage('Cleaning up') {
- 			steps {
- 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
- 			
-        	 sh "docker rmi -f fourat8/image"
-        	}
-        	}
-        	}
-          
+        
         	
     		
     		
