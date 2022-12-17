@@ -45,7 +45,11 @@ pipeline {
             }
         	}
             
-            
+            stage('Test unitaire') {
+            steps {
+                    sh 'mvn --batch-mode test'
+            }
+            }
             
             stage('Build image') {
            	steps {
