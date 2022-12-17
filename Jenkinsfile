@@ -22,12 +22,7 @@ pipeline {
                  
             }
             }
-            stage('MVN COMPILE') {
-            steps {
-                sh 'mvn compile'
-                 
-            }
-            }
+            
 			
 			
 		 
@@ -37,23 +32,13 @@ pipeline {
             
               
             
-            stage('Package') {
+                      
+       		stage('NEXUS') {
             steps {
-                sh 'mvn -DskipTests clean package' 
+                sh 'mvn deploy -DskipTests'
+                  
             }
-            }
-            
-            
-        
-        
-		    stage('Publish to Nexus Repository Manager') {
-            steps {
-                script {
-					nexusArtifactUploader artifacts: [[artifactId: 'ProjetDevops', classifier: '', file: 'target/ProjetDevops-1.0.jar', type: 'jar']], credentialsId: 'NEXUS_CRED', groupId: 'com.esprit.examen', nexusUrl: '192.168.1.135:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0.0-SNAPSHOT'
-				}
-            }
-           		
-            }
+        	}
             
             stage('Test unitaire') {
             steps {
