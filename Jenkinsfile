@@ -49,7 +49,7 @@ pipeline {
             
             stage('Build image') {
            	steps {
-       		 sh "docker build -t fourat8/image ."
+       		 sh "docker build -t fourat8/projetdevops-backend ."
        		}
        		}
     		
@@ -57,7 +57,7 @@ pipeline {
  			steps {
  			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
  			
-        	 sh "docker push fourat8/image"
+        	 sh "docker push fourat8/projetdevops-backend"
         	}
         	}
         	}
