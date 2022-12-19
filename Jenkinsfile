@@ -29,11 +29,7 @@ pipeline {
             }
             }
             
-            stage('Test unitaire') {
-            steps {
-                    sh 'mvn test'
-            }
-            }
+            
             
             stage('Docker compose') {
             steps {
@@ -41,6 +37,11 @@ pipeline {
             }
             }
             
+            stage('Test unitaire') {
+            steps {
+                    sh 'mvn test'
+            }
+            }
        	   
        	    
 			
