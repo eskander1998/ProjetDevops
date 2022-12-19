@@ -29,17 +29,19 @@ pipeline {
             }
             }
             
+            stage('Test unitaire') {
+            steps {
+                    sh 'mvn test'
+            }
+            }
+            
             stage('Docker compose') {
             steps {
                 sh 'docker-compose up -d' 
             }
             }
             
-       	    stage('Test unitaire') {
-            steps {
-                    sh 'mvn test'
-            }
-            }
+       	   
        	    
 			
 			stage('SonarQube analysis 1') {
