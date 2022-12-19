@@ -4,13 +4,12 @@ services:
   mysql-container3:
     container_name: mysql-container3
     ports:
-      - '3306:3306'
+      - '3307:3307'
     environment:
-        - MYSQL_DATABASE=devopsproj
-        - MYSQL_ROOT_PASSWORD=root
+      MYSQL_DATABASE: devopsproj
+      MYSQL_ROOT_PASSWORD: root
+      
     restart: unless-stopped
-    volumes:
-      - mysql-container3:/var/lib/mysql:rw
     image: 'mysql'
     
   projetdevops-backend:
