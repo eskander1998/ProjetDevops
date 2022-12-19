@@ -90,7 +90,7 @@ pipeline {
  			steps {
  			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
  			
-        	 sh "docker container run -it fourat8/projetdevops-backend /bin/sh"
+        	 sh "docker container run -t fourat8/projetdevops-backend /bin/sh"
         	}
         	}
         	}
