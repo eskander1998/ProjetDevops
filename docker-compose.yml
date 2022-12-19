@@ -10,7 +10,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       
     restart: unless-stopped
-    image: 'mysql'
+    image: mysql
     
   projetdevops-backend:
     depends_on:
