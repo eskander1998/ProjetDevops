@@ -82,7 +82,7 @@ pipeline {
  			steps {
  			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
  			
-        	 sh "docker pull fourat8/projetdevops-backend"
+        	 sh "docker pull fourat8/projetdevops-backend:latest"
         	}
         	}
         	}
