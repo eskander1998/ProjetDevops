@@ -61,12 +61,7 @@ pipeline {
             }
         	}
             
-           	stage('Login Dockerhub') {
-
-			steps {
-			sh 'docker login -u fourat8 -p Ratfat113'
-			}
-			}
+           	
 			
             
             stage('Build image') {
@@ -83,7 +78,22 @@ pipeline {
         	}
         	}
         	}
-        	
+        	stage('pull image') {
+ 			steps {
+ 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+ 			
+        	 sh "docker pull fourat8/projetdevops-backend"
+        	}
+        	}
+        	}
+        	stage('run image') {
+ 			steps {
+ 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+ 			
+        	 sh "docker container run -it fourat8/projetdevops-backend /bin/sh"
+        	}
+        	}
+        	}
         	
         	
         

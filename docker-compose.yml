@@ -3,14 +3,14 @@ version: "2.2"
 services:
   mysql-container3:
     container_name: mysql-container3
-    image: mysql
-    restart: unless-stopped
     ports:
       - '3306:3306'
     environment:
       MYSQL_DATABASE: devopsproj
       MYSQL_ROOT_PASSWORD: root
       
+    restart: unless-stopped
+    image: mysql
     
   projetdevops-backend:
     depends_on:
