@@ -77,7 +77,7 @@ pipeline {
             
        	    stage('Test unitaire') {
             steps {
-                    sh 'mvn --batch-mode test'
+                    sh 'mvn test'
             }
             }
        	    
