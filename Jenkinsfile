@@ -94,11 +94,7 @@ pipeline {
                     sh 'mvn test'
             }
             }
-            stage('restart backend') {
-            steps {
-                    sh 'docker restart backend'
-            }
-            }
+            
     		 
            
             
