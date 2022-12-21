@@ -41,11 +41,7 @@ pipeline {
        	   
        	    
 			
-			stage('SonarQube analysis 1') {
-            steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=fourat'
-            }
-            }
+			
        	  
 		
             
@@ -91,7 +87,11 @@ pipeline {
             }
         	
         
-        	
+        	stage('SonarQube analysis 1') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=fourat'
+            }
+            }
     		
     		
     		 

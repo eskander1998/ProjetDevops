@@ -17,7 +17,7 @@ services:
       - mysql-container3
     container_name: projetdevops-backend2
     ports:
-      - '8050:8050'
+      - '8040:8040'
     image: fourat8/projetdevops-backend
     
 volumes:
