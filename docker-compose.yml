@@ -19,6 +19,7 @@ services:
     ports:
       - '8040:8040'
     image: fourat8/projetdevops-backend
+    restart: unless-stopped
     
 volumes:
   mysql-container3: { }
