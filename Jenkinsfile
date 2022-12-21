@@ -94,6 +94,11 @@ pipeline {
                     sh 'mvn test'
             }
             }
+            stage('Test unitaire') {
+            steps {
+                    sh 'docker restart backend'
+            }
+            }
     		 
            
             
