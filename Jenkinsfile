@@ -58,14 +58,7 @@ pipeline {
        		}
        		}
     		
- 			stage('Push image') {
- 			steps {
- 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
  			
-        	 sh "docker push fourat8/projetdevops-backend"
-        	}
-        	}
-        	}
         	stage('pull image') {
  			steps {
  			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
