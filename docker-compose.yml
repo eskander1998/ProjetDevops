@@ -12,12 +12,12 @@ services:
     restart: unless-stopped
     image: mysql
     
-  projetdevops-backend:
+  projetdevops-backend2:
     depends_on:
       - mysql-container3
-    container_name: projetdevops-backend
+    container_name: projetdevops-backend2
     ports:
-      - '8089:8089'
+      - '8050:8050'
     image: fourat8/projetdevops-backend
     
 volumes:
