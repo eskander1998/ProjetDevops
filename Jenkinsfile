@@ -33,11 +33,7 @@ pipeline {
             
           
             
-            stage('Test unitaire') {
-            steps {
-                    sh 'mvn test'
-            }
-            }
+            
        	   
        	    
 			
@@ -93,7 +89,11 @@ pipeline {
             }
             }
     		
-    		
+    		stage('Test unitaire') {
+            steps {
+                    sh 'mvn test'
+            }
+            }
     		 
            
             
