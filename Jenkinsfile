@@ -82,14 +82,7 @@ pipeline {
         	}
         	}
         	}
-        	stage('run image') {
- 			steps {
- 			           	 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
- 			
-        	 sh "docker container run -t fourat8/projetdevops-backend /bin/sh"
-        	}
-        	}
-        	}
+        	
         	
         	stage('Docker compose') {
             steps {
